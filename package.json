@@ -1,0 +1,12 @@
+{
+  "name": "Sentiment-analysis",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/AlenioH/Sentiment-analysis.git",
+  "author": "Alena Hasslacher <alena.hasslacher@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "got": "^11.1.2",
+    "node-fetch": "^2.6.0"
+  }
+}
