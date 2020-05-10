@@ -13,13 +13,10 @@ const got = require('got');
           text: `${process.argv.slice(2)}`,
           level: 'sentence',
           //shows correct word count when it's one word, and then oooh lala, when 2 - 3, when 3 - 5, when 4 - 7...
-          //doesn't show word count if level entity is incl
+          //doesn't show word count if level entity/sentence is incl
         },
       },
     );
-
-    // responseA = Array.from(response.body);
-    // delete response.body.wordCount;
 
     console.log('Your text has the following sentiment:' + response.body);
   } catch (error) {
