@@ -2,7 +2,7 @@ const got = require('got');
 
 (async () => {
   try {
-    const response = await got.post(
+    let response = await got.post(
       'https://apidemo.theysay.io/api/v1/sentiment',
       {
         headers: {
@@ -11,13 +11,17 @@ const got = require('got');
         },
         json: {
           text: `${process.argv.slice(2)}`,
-          level: 'entity',
+          level: 'sentence',
           //shows correct word count when it's one word, and then oooh lala, when 2 - 3, when 3 - 5, when 4 - 7...
           //doesn't show word count if level entity is incl
         },
       },
     );
-    console.log(response.body);
+
+    // responseA = Array.from(response.body);
+    // delete response.body.wordCount;
+
+    console.log('Your text has the following sentiment:' + response.body);
   } catch (error) {
     console.log(error.response.body);
   }
