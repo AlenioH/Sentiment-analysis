@@ -10,7 +10,10 @@ const got = require('got');
           Referer: 'https://apidemo.theysay.io/',
         },
         json: {
-          text: `${process.argv.slice(2)}`, //shows correct word count when it's one word, and then oooh lala, when 2 - 3, when 3 - 5, when 4 - 7...
+          text: `${process.argv.slice(2)}`,
+          level: 'entity',
+          //shows correct word count when it's one word, and then oooh lala, when 2 - 3, when 3 - 5, when 4 - 7...
+          //doesn't show word count if level entity is incl
         },
       },
     );
