@@ -2,7 +2,7 @@ const got = require('got');
 
 (async () => {
   try {
-    let response = await got.post(
+    const response = await got.post(
       'https://apidemo.theysay.io/api/v1/sentiment',
       {
         headers: {
@@ -11,14 +11,19 @@ const got = require('got');
         },
         json: {
           text: `${process.argv.slice(2)}`,
-          level: 'sentence',
-          //shows correct word count when it's one word, and then oooh lala, when 2 - 3, when 3 - 5, when 4 - 7...
-          //doesn't show word count if level entity/sentence is incl
         },
       },
     );
+    let message = JSON.parse(response.body); // turns text received from web-server to object
+    const info = Object.values(message); //returns an array of values
+    const confidence = info[0].confidence * (100).toFixed(2) + '%'; // returns the  values and turns them to %
+    const positivity = info[0].positive * (100).toFixed(2) + '%';
+    const negativity = info[0].negative * (100).toFixed(2) + '%';
+    const neutrality = info[0].neutral * (100).toFixed(2) + '%';
 
-    console.log('Your text has the following sentiment:' + response.body);
+    console.log(
+      `The sentiment of your text (with ${confidence} confidence) is: \n${positivity} positive \n${negativity} negative \n${neutrality} neutral`,
+    );
   } catch (error) {
     console.log(error.response.body);
   }
