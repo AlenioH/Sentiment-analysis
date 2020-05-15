@@ -10,11 +10,12 @@ const got = require('got');
           Referer: 'https://apidemo.theysay.io/',
         },
         json: {
-          text: `${process.argv.slice(2)}`,
+          text: `${process.argv.slice(2).join(' ')}`,
         },
       },
     );
-    console.log(`${process.argv.slice(2).join(' ')}`);
+    // console.log(`${process.argv.slice(2).join(' ')}`); the arguments are returned as an array, so they are turned to "phrase" by .join()
+
     let message = JSON.parse(response.body); // turns text received from web-server to object
     const info = Object.values(message); //returns an array of values
     const confidence = info[0].confidence * (100).toFixed(2) + '%'; // returns the  values and turns them to %
@@ -23,7 +24,7 @@ const got = require('got');
     const neutrality = info[0].neutral * (100).toFixed(2) + '%';
 
     console.log(
-      `The sentiment of your text (with ${confidence} confidence) is: \n${positivity} positive \n${negativity} negative \n${neutrality} neutral`,
+      `The sentiment of your text (with ${confidence} certainty) is: \n${positivity} positive \n${negativity} negative \n${neutrality} neutral`,
     );
   } catch (error) {
     console.log(error.response.body);
