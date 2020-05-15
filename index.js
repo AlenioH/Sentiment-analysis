@@ -14,6 +14,7 @@ const got = require('got');
         },
       },
     );
+    console.log(`${process.argv.slice(2).join(' ')}`);
     let message = JSON.parse(response.body); // turns text received from web-server to object
     const info = Object.values(message); //returns an array of values
     const confidence = info[0].confidence * (100).toFixed(2) + '%'; // returns the  values and turns them to %
