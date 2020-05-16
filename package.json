@@ -6,7 +6,6 @@
   "author": "Alena Hasslacher <alena.hasslacher@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "got": "^11.1.2",
-    "node-fetch": "^2.6.0"
+    "got": "^11.1.2"
   }
 }
