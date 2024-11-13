@@ -5,3 +5,6 @@ The task was to build a Node.js sentiment analysis program that will use the dem
 - whether it is positive, negative or neutral
 - what percentage of each the text is
 - what kind of confidence rating it has
+
+## Update
+As of recently, the TheySay sentiment analysis API, accessible through apidemo.theysay.io, appears to be offline or retired.
